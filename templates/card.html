@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>My Card</h1>
+    <p>You can now use this digital card and buy food and use the premium lounge area!!!</p>
+    <p>Top up your card right and reap its benefits!!</p>
+    <p>For every time you add 10 euros, you will get points which can be used to buy protein snacks!!</p>
+    <h2>Top up</h2>
+    <p><a href="{{ url_for('card_details') }}">My Card details</a></p>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.amount.label }}
+        {{ form.amount() }}
+        {% for error in form.amount.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+
+
+
+
+{% endblock %}

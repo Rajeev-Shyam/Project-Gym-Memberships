@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.floor.label }}
+        {{ form.floor() }}
+        {% for error in form.floor.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.time1.label }}
+        {{ form.time1() }}
+        {% for error in form.time1.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.time2.label }}
+        {{ form.time2() }}
+        {% for error in form.time2.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.trainer.label }}
+        {{ form.trainer() }}
+        {% for error in form.trainer.errors %}
+            {{ error}}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+
+    </form>
+
+    {% if slots %}
+        <table>
+            <caption>{{ caption }}</caption>
+            {% for slot in slots %}
+                <tr>
+                    <td>{{ slot["gym"]}}</td>
+                    <td>{{ slot["time"]}}</td>
+                    <td>{{ slot["time_length"]}}</td>
+                    <td>{{ slot["trainer"]}}</td>
+                    <td><a href="{{ url_for('slot', slot_id=slot['slot_id'])}}">Book</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+<p><a href="{{ url_for('bookings')}}">Bookings</a></p>
+{% endblock %}

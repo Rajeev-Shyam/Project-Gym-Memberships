@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>GYM</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ url_for('all_slots') }}">Slots and Timings</a></li>
+                    <li><a href="{{ url_for('bookings')}}">My Bookings</a></li>
+                    <li><a href="{{ url_for('card')}}">My GymCard</a></li>
+                    <li><a href="{{ url_for('profile')}}">My Profile</a></li>
+                    <li><a href="{{ url_for('citations')}}">Citations</a></li>
+                    {% if g.user %}
+                        <!-- <p>User Id: {{ g.user}}</p> -->
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </nav>
+
+        </header>
+        <main>
+            <section>
+                {% block main_content %}
+                {% endblock %}
+            </section>
+        </main>
+    </body>
+
+</html>

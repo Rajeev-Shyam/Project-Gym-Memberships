@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>History</h1>
+    {{ empty }}
+    {% if history %}
+        <table>
+            <tr>
+                <th>Booking Id</th>
+                <th>Time</th>
+                <th>Gym</th>
+                <th>Trainer</th>
+                <th>Date</th>
+            </tr>
+        </tr>
+        {% for slot in history %}
+            <tr>
+                <td>{{ slot['booking_id']}}</td>
+                <td>{{ slot['time']}}</td>
+                <td>{{ slot['gym']}}</td>
+                <td>{{ slot['trainer']}}</td>
+                <td>{{ slot['date']}}</td>
+            </tr>
+        {%  endfor %}
+        </table>
+    {% endif %}
+
+
+
+
+{% endblock %}

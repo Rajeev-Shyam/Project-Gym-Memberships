@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your bookings for today:</h1>
+    {% if bookings %}
+        <table>
+            <tr>
+                <th>Slot Id</th>
+                <th>Time</th>
+                <th>Gym</th>
+                <th>Trainer</th>
+                <th></th>
+            </tr>
+            {% for slot in bookings %}
+                <tr>
+                    <td>{{ slot['slot_id']}}</td>
+                    <td>{{ slot['time']}}</td>
+                    <td>{{ slot['trainer']}}</td>     
+                    <td><a href="{{ url_for('cancel', slot_id=slot['slot_id'])}}">Cancel booking</a></td>
+                        
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+
+
+
+{% endblock %}
